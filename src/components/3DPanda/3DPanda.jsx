@@ -51,7 +51,6 @@ const ThreeDPanda = () => {
   return (
     <div style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Canvas
-        frameloop="demand"
         style={{ height: '1000px', width: '1000px' }}
         camera={{ position: [-2, 2, 5], fov: 45, near: 0.1, far: 200 }}
       >
