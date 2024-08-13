@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Cursor from './components/Cursor/Cursor';
+import Header from './components/Header/Header';
+import svechenie from './assets/свеченте 2.png'
+import Main from './components/Main/Main';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Cursor />
+      <Header />
+      <Main />
+      {/* <img src={''} alt='' className={'kartinka'}/> */}
+      <img src={svechenie} alt='' className={'kartinka2'}/>
     </div>
   );
 }
 
 export default App;
+
+
+
