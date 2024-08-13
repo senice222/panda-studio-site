@@ -13,36 +13,89 @@ export function Model(props) {
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    if (actions.idle123) {
-      actions.idle123.setLoop(THREE.LoopRepeat);
-      actions.idle123.play();
+    const idleAction = actions['idle123.002'];
+
+    if (idleAction) {
+      idleAction.setLoop(THREE.LoopRepeat);
+      idleAction.play();
+    } else {
+      console.log('No idle123.002 action found.');
     }
   }, [actions]);
   
-  const handleClick = (event) => {
-    event.stopPropagation();
-  };
-
   return (
-    <group ref={group} {...props} position={[0, -1.5, 0]} scale={[2, 2, 2]} dispose={null} onPointerDown={handleClick}>
+    <group ref={group} position={[0, -2.1, 0]} scale={[2.5, 2.5, 2.5]} {...props} dispose={null}>
       <group name="Scene">
         <group name="Armature">
           <primitive object={nodes.mixamorigHips} />
-          <primitive object={nodes.Ctrl_Master} />
-          <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
-          <primitive object={nodes.Ctrl_Hand_IK_Left} />
-          <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
-          <primitive object={nodes.Ctrl_Hand_IK_Right} />
-          <primitive object={nodes.Ctrl_Foot_IK_Left} />
-          <primitive object={nodes.Ctrl_LegPole_IK_Left} />
-          <primitive object={nodes.Ctrl_Foot_IK_Right} />
-          <primitive object={nodes.Ctrl_LegPole_IK_Right} />
-          <skinnedMesh name="Retopo_Player_SkinPandaVariant1_0004" geometry={nodes.Retopo_Player_SkinPandaVariant1_0004.geometry} material={materials.Material} skeleton={nodes.Retopo_Player_SkinPandaVariant1_0004.skeleton} />
-          <skinnedMesh name="Vert002" geometry={nodes.Vert002.geometry} material={materials.Material} skeleton={nodes.Vert002.skeleton} />
-          <skinnedMesh name="Vert" geometry={nodes.Vert.geometry} material={materials.Material} skeleton={nodes.Vert.skeleton} morphTargetDictionary={nodes.Vert.morphTargetDictionary} morphTargetInfluences={nodes.Vert.morphTargetInfluences} />
+          <primitive object={nodes.Eye_L} />
+          <primitive object={nodes.ryrlashes_L} />
+          <primitive object={nodes.Eye_R} />
+          <primitive object={nodes.ryrlashes_R} />
+          <skinnedMesh
+            name="Retopo_Player_SkinPandaVariant1_0004"
+            geometry={nodes.Retopo_Player_SkinPandaVariant1_0004.geometry}
+            material={materials['Material.001']}
+            skeleton={nodes.Retopo_Player_SkinPandaVariant1_0004.skeleton}
+          />
+          <skinnedMesh
+            name="Vert"
+            geometry={nodes.Vert.geometry}
+            material={materials['Material.001']}
+            skeleton={nodes.Vert.skeleton}
+          />
+          <skinnedMesh
+            name="Vert002"
+            geometry={nodes.Vert002.geometry}
+            material={materials['Material.001']}
+            skeleton={nodes.Vert002.skeleton}
+          />
         </group>
+        <directionalLight
+          intensity={0.683}
+          decay={2}
+          position={[5.353, 2.162, 0.96]}
+          rotation={[-1.205, 1.107, 1.165]}
+          target={nodes.Sun002.target}
+        >
+          <primitive object={nodes.Sun002.target} position={[0, 0, -1]} />
+        </directionalLight>
+        <directionalLight
+          intensity={1.366}
+          decay={2}
+          position={[-3.824, 3.019, 3.243]}
+          rotation={[-0.801, -0.677, -0.738]}
+          target={nodes.Sun001.target}
+        >
+          <primitive object={nodes.Sun001.target} position={[0, 0, -1]} />
+        </directionalLight>
+        <directionalLight
+          intensity={3.415}
+          decay={2}
+          color="#ffb69a"
+          position={[-0.889, 1.865, -3.326]}
+          rotation={[-2.945, -0.109, 0.022]}
+          target={nodes.Sun.target}
+        >
+          <primitive object={nodes.Sun.target} position={[0, 0, -1]} />
+        </directionalLight>
+        <pointLight
+          name="Point002"
+          intensity={1.043}
+          decay={2}
+          position={[0.083, 1.367, 0.507]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        />
+        <pointLight
+          name="Point001"
+          intensity={1.043}
+          decay={2}
+          position={[-0.377, -0.072, 0.463]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        />
       </group>
     </group>
+
   )
 }
 
