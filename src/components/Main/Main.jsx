@@ -5,6 +5,7 @@ import bulb2 from "../../assets/bulb-dynamic-color 2.png";
 import bulb3 from "../../assets/bulb-dynamic-color 3.png";
 import bulb4 from "../../assets/bulb-dynamic-color 4.png";
 import panda from "../../assets/панда (2) 1.png";
+import ThreeDPanda from "../3DPanda/3DPanda";
 
 const Main = () => {
   return (
@@ -14,7 +15,9 @@ const Main = () => {
       <img className={s.bulb2} src={bulb2} alt="bulb2" />
       <img className={s.bulb3} src={bulb3} alt="bulb3" />
       <img className={s.bulb4} src={bulb4} alt="bulb4" />
-      <img className={s.panda} src={panda} alt="bulb4" />
+      <div className={s.panda}>
+        <ThreeDPanda />
+      </div>
       <div className={s.texts}>
         <TEXT />
         <TEXT />
