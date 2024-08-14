@@ -13,8 +13,9 @@ export function Model(props) {
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    const idleAction = actions['idle123.002'];
-
+    console.log('Available actions:', actions);
+    const idleAction = actions['Armature'];
+    console.log(actions)
     if (idleAction) {
       idleAction.setLoop(THREE.LoopRepeat);
       idleAction.play();
@@ -22,37 +23,28 @@ export function Model(props) {
       console.log('No idle123.002 action found.');
     }
   }, [actions]);
-  
+
+
   return (
     <group ref={group} position={[0, -2.1, 0]} scale={[2.5, 2.5, 2.5]} {...props} dispose={null}>
       <group name="Scene">
         <group name="Armature">
+          <primitive object={nodes.Ctrl_Hand_IK_Left} />
+          <primitive object={nodes.Ctrl_Hand_IK_Right} />
+          <primitive object={nodes.Ctrl_LegPole_IK_Left} />
           <primitive object={nodes.mixamorigHips} />
-          <primitive object={nodes.Eye_L} />
-          <primitive object={nodes.ryrlashes_L} />
-          <primitive object={nodes.Eye_R} />
-          <primitive object={nodes.ryrlashes_R} />
-          <skinnedMesh
-            name="Retopo_Player_SkinPandaVariant1_0004"
-            geometry={nodes.Retopo_Player_SkinPandaVariant1_0004.geometry}
-            material={materials['Material.001']}
-            skeleton={nodes.Retopo_Player_SkinPandaVariant1_0004.skeleton}
-          />
-          <skinnedMesh
-            name="Vert"
-            geometry={nodes.Vert.geometry}
-            material={materials['Material.001']}
-            skeleton={nodes.Vert.skeleton}
-          />
-          <skinnedMesh
-            name="Vert002"
-            geometry={nodes.Vert002.geometry}
-            material={materials['Material.001']}
-            skeleton={nodes.Vert002.skeleton}
-          />
+          <primitive object={nodes.Ctrl_Master} />
+          <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
+          <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
+          <primitive object={nodes.Ctrl_Foot_IK_Left} />
+          <primitive object={nodes.Ctrl_Foot_IK_Right} />
+          <primitive object={nodes.Ctrl_LegPole_IK_Right} />
+          <skinnedMesh name="Retopo_Player_SkinPandaVariant1_0004" geometry={nodes.Retopo_Player_SkinPandaVariant1_0004.geometry} material={materials.Material} skeleton={nodes.Retopo_Player_SkinPandaVariant1_0004.skeleton} />
+          <skinnedMesh name="Vert" geometry={nodes.Vert.geometry} material={materials.Material} skeleton={nodes.Vert.skeleton} />
+          <skinnedMesh name="Vert002" geometry={nodes.Vert002.geometry} material={materials.Material} skeleton={nodes.Vert002.skeleton} />
         </group>
         <directionalLight
-          intensity={0.683}
+          intensity={1}
           decay={2}
           position={[5.353, 2.162, 0.96]}
           rotation={[-1.205, 1.107, 1.165]}
@@ -61,7 +53,7 @@ export function Model(props) {
           <primitive object={nodes.Sun002.target} position={[0, 0, -1]} />
         </directionalLight>
         <directionalLight
-          intensity={1.366}
+          intensity={1.5}
           decay={2}
           position={[-3.824, 3.019, 3.243]}
           rotation={[-0.801, -0.677, -0.738]}
@@ -70,7 +62,7 @@ export function Model(props) {
           <primitive object={nodes.Sun001.target} position={[0, 0, -1]} />
         </directionalLight>
         <directionalLight
-          intensity={3.415}
+          intensity={2}
           decay={2}
           color="#ffb69a"
           position={[-0.889, 1.865, -3.326]}
@@ -81,26 +73,32 @@ export function Model(props) {
         </directionalLight>
         <pointLight
           name="Point002"
-          intensity={1.043}
+          intensity={0.5}
           decay={2}
           position={[0.083, 1.367, 0.507]}
           rotation={[-Math.PI / 2, 0, 0]}
         />
         <pointLight
           name="Point001"
-          intensity={1.043}
+          intensity={0.5}
           decay={2}
           position={[-0.377, -0.072, 0.463]}
           rotation={[-Math.PI / 2, 0, 0]}
         />
+        <pointLight
+          name="Point003"
+          intensity={1}
+          decay={2}
+          color="#00a5ff"
+          position={[0.063, 0.794, 0.389]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        />
       </group>
     </group>
-
   )
 }
 
 const ThreeDPanda = () => {
-
   return (
     <div style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Canvas

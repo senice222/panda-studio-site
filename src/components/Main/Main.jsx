@@ -4,7 +4,6 @@ import bulb1 from "../../assets/bulb-dynamic-color 1.png";
 import bulb2 from "../../assets/bulb-dynamic-color 2.png";
 import bulb3 from "../../assets/bulb-dynamic-color 3.png";
 import bulb4 from "../../assets/bulb-dynamic-color 4.png";
-import panda from "../../assets/панда (2) 1.png";
 import ThreeDPanda from "../3DPanda/3DPanda";
 
 const Main = () => {
